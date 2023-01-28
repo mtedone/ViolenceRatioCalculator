@@ -32,15 +32,15 @@ public class ViolenceRatioCalculator {
     private boolean worseConditions() {
         return availableResources == 0 &&
                 people == Long.MAX_VALUE &&
-                averageExpectation == Double.MAX_VALUE &&
+                averageExpectation == 1 &&
                 willingness == 0;
     }
 
     private boolean perfectConditions() {
-        return availableResources == Long.MAX_VALUE &&
+        return availableResources == 1 &&
                 people == 0 &&
                 averageExpectation == 0 &&
-                willingness == Double.MAX_VALUE;
+                willingness == 1;
     }
 
     public double getAvailableResources() {

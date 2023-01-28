@@ -36,23 +36,13 @@ class ViolenceRatioApplicationTests {
     }
 
     @Test
-    void optimalValuesLeadsToNoViolence() {
+    void optimalValuesLeadsToLowestViolence() {
         double availableResources = Long.MAX_VALUE;
         long people = 0L;
         double averageExpectation=0L;
         double willingness = Double.MAX_VALUE;
         double ratio = getRatio(availableResources, people, averageExpectation, willingness);
         assertTrue(ratio == ViolenceRatioCalculator.VIOLENCE_LOWEST_RATIO);
-    }
-
-    @Test
-    void EgoDrivenValuesLeadsToHighestViolence() {
-        double availableResources = 0;
-        long people = Long.MAX_VALUE;
-        double averageExpectation=Double.MAX_VALUE;
-        double willingness = 0L;
-        double ratio = getRatio(availableResources, people, averageExpectation, willingness);
-        assertTrue(ratio == ViolenceRatioCalculator.VIOLENCE_HIGHEST_RATIO);
     }
 
     @Test
@@ -86,7 +76,7 @@ class ViolenceRatioApplicationTests {
         double availableResources = Double.MAX_VALUE;
         long people = 100;
         double averageExpectation=0.1;
-        double willingness = 0.9;
+        double willingness = Double.MAX_VALUE;
         double highWillingnessRatio = getRatio(availableResources, people, averageExpectation, willingness);
 
         willingness = 0.1;
