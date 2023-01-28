@@ -24,6 +24,26 @@ class ViolenceRatioApplicationTests {
         assertTrue(ratio == ViolenceRatioCalculator.VIOLENCE_LOWEST_RATIO);
     }
 
+    @Test
+    void EgoDrivenValuesShouldLeadToHighestViolence() {
+        long availableResources = Long.MIN_VALUE;
+        long people = Long.MAX_VALUE;
+        double averageExpectation=Double.MAX_VALUE;
+        double willingness = Double.MIN_VALUE;
+        double ratio = getRatio(availableResources, people, averageExpectation, willingness);
+        assertTrue(ratio == ViolenceRatioCalculator.VIOLENCE_HIGHEST_RATIO);
+    }
+
+//    @Test
+//    void lowerResourcesLeadToHigherViolence() {
+//        long availableResources = Long.MIN_VALUE;
+//        long people = Long.MIN_VALUE;
+//        double averageExpectation=Double.MIN_VALUE;
+//        double willingness = Double.MAX_VALUE;
+//        double ratio = getRatio(availableResources, people, averageExpectation, willingness);
+//        assertTrue((0 < ratio && ratio < 1));
+//    }
+
     private static double getRatio(long availableResources, long people, double averageExpectation, double willingness) {
         ViolenceRatioCalculator calculator = getCalculator(availableResources, people, averageExpectation, willingness);
         double ratio = calculator.getRatio();

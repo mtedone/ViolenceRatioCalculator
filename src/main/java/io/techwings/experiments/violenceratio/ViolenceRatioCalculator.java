@@ -13,15 +13,21 @@ public class ViolenceRatioCalculator {
     private ViolenceRatioCalculator() {}
 
     public double getRatio() {
-        if (availableResources == Long.MAX_VALUE &&
-        people == Long.MIN_VALUE &&
-        averageExpectation == Double.MIN_VALUE &&
-                willingness == Double.MAX_VALUE) {
-            return VIOLENCE_LOWEST_RATIO;
-        } else {
-            return VIOLENCE_HIGHEST_RATIO;
-        }
+        return perfectConditions() ? VIOLENCE_LOWEST_RATIO : VIOLENCE_HIGHEST_RATIO;
+    }
 
+    private boolean worseConditions() {
+        return availableResources == Long.MIN_VALUE &&
+                people == Long.MAX_VALUE &&
+                averageExpectation == Double.MAX_VALUE &&
+                willingness == Double.MIN_VALUE;
+    }
+
+    private boolean perfectConditions() {
+        return availableResources == Long.MAX_VALUE &&
+                people == Long.MIN_VALUE &&
+                averageExpectation == Double.MIN_VALUE &&
+                willingness == Double.MAX_VALUE;
     }
 
     public static class Builder {
